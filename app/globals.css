@@ -1,0 +1,300 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to Amul's official color palette */
+  --amul-red: #ed1c24;
+  --amul-white: #ffffff;
+  --amul-cream: #fff8e7;
+  --amul-butter: #ffd580;
+
+  /* Dairy-inspired color palette using Amul colors */
+  --background: #fff8e7; /* Amul cream */
+  --foreground: oklch(0.15 0.02 85); /* Deep charcoal */
+  --card: #ffffff; /* Amul white */
+  --card-foreground: oklch(0.15 0.02 85);
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.15 0.02 85);
+  --primary: #ed1c24; /* Amul red */
+  --primary-foreground: #ffffff;
+  --secondary: #ffd580; /* Amul butter yellow */
+  --secondary-foreground: oklch(0.15 0.02 85);
+  --muted: oklch(0.94 0.015 85); /* Soft milk white */
+  --muted-foreground: oklch(0.45 0.02 85);
+  --accent: #ffd580; /* Amul butter yellow */
+  --accent-foreground: oklch(0.15 0.02 85);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.88 0.02 85); /* Subtle cream border */
+  --input: oklch(0.96 0.01 85);
+  --ring: #ed1c24; /* Amul red */
+  --chart-1: #ed1c24;
+  --chart-2: #ffd580;
+  --chart-3: #fff8e7;
+  --chart-4: #ffffff;
+  --chart-5: oklch(0.35 0.05 25);
+  --radius: 1rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: oklch(0.15 0.02 85);
+  --sidebar-primary: #ed1c24;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fff8e7;
+  --sidebar-accent-foreground: oklch(0.15 0.02 85);
+  --sidebar-border: oklch(0.88 0.02 85);
+  --sidebar-ring: #ed1c24;
+}
+
+.dark {
+  --background: oklch(0.08 0.01 85);
+  --foreground: oklch(0.95 0.005 85);
+  --card: oklch(0.1 0.01 85);
+  --card-foreground: oklch(0.95 0.005 85);
+  --popover: oklch(0.1 0.01 85);
+  --popover-foreground: oklch(0.95 0.005 85);
+  --primary: #ed1c24; /* Keep Amul red in dark mode */
+  --primary-foreground: #ffffff;
+  --secondary: #ffd580; /* Keep butter yellow */
+  --secondary-foreground: oklch(0.08 0.01 85);
+  --muted: oklch(0.15 0.015 85);
+  --muted-foreground: oklch(0.65 0.02 85);
+  --accent: #ffd580;
+  --accent-foreground: oklch(0.08 0.01 85);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.18 0.02 85);
+  --input: oklch(0.15 0.01 85);
+  --ring: #ed1c24;
+  --chart-1: #ed1c24;
+  --chart-2: #ffd580;
+  --chart-3: #fff8e7;
+  --chart-4: #ffffff;
+  --chart-5: oklch(0.45 0.05 25);
+  --sidebar: oklch(0.1 0.01 85);
+  --sidebar-foreground: oklch(0.95 0.005 85);
+  --sidebar-primary: #ed1c24;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: oklch(0.18 0.02 85);
+  --sidebar-accent-foreground: oklch(0.95 0.005 85);
+  --sidebar-border: oklch(0.18 0.02 85);
+  --sidebar-ring: #ed1c24;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Updated Amul watermark background with provided image */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQse65_0kTD0P2VqHEQafFXTmg4Eiv0LMeZJ6MFDCDF3sCMZ-_6cbNlAAqZ&s=10");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+/* Custom animations for dairy freshness */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Added 3D tilt animation for product cards */
+@keyframes tilt {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+  }
+}
+
+/* Added milk-themed animations */
+@keyframes milk-wave {
+  0% {
+    transform: translateX(-100%) skewX(-5deg);
+  }
+  100% {
+    transform: translateX(100%) skewX(-5deg);
+  }
+}
+
+@keyframes milk-wave-reverse {
+  0% {
+    transform: translateX(100%) skewX(5deg);
+  }
+  100% {
+    transform: translateX(-100%) skewX(5deg);
+  }
+}
+
+@keyframes milk-droplet {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes milk-splash {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+}
+
+@keyframes subtle-parallax {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-ripple {
+  animation: ripple 0.6s linear;
+}
+
+.animate-flow {
+  animation: flow 8s ease-in-out infinite;
+}
+
+.animate-tilt {
+  transition: transform 0.3s ease;
+}
+
+.animate-tilt:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
+}
+
+.animate-milk-wave {
+  animation: milk-wave 12s ease-in-out infinite;
+}
+
+.animate-milk-wave-reverse {
+  animation: milk-wave-reverse 15s ease-in-out infinite;
+}
+
+.animate-milk-droplet {
+  animation: milk-droplet 6s ease-in-out infinite;
+}
+
+.animate-milk-splash {
+  animation: milk-splash 8s ease-in-out infinite;
+}
+
+.animate-subtle-parallax {
+  animation: subtle-parallax 10s ease-in-out infinite;
+}
+
+/* Added Fette Gotisch font for logo */
+@import url("https://fonts.googleapis.com/css2?family=Fette+Fraktur&display=swap");
+
+.amul-logo {
+  font-family: "Fette Fraktur", cursive;
+}
